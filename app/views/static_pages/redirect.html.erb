@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <div class="row">
+  	<div class="col-md-6">
+  	  <h4><strong>Name:</strong> <%= @user["name"] %></h4>
+  	  <h4><strong>Email:</strong> <%= @user["email"] %></h4>
+  	  <h4><strong>ID:</strong> <%= @user["id"] %></h4>
+  	</div>
+  	<div class="col-md-6">
+  	  <h4><strong>Companies:</strong></h4>
+  	  <% @companies.each do |company| %>
+  	  	<h5><%= company["name"] %></h5>
+  	  	<h2><strong>ID:</strong> <%= company["id"] %>, <strong>EIN:</strong> <%= company["ein"] %>, <strong>Grade:</strong> <%= company["grade"] %></h2>
+  	  <% end %>
+  	</div>
+  </div>
+</div>
