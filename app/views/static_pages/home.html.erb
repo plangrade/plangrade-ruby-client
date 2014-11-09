@@ -5,5 +5,5 @@
     <a href="https://plangrade.com/">plangrade</a>
     ruby client example application.
   </h2>
-  <%= link_to "Hit plangrade", @client.auth_code.authorize_url(:redirect_uri => @redirect_uri), class: "btn btn-md" %>
+  <%= link_to "Hit plangrade", @client.auth_code.authorize_url(:redirect_uri => redirect_url), class: "btn btn-md" %>
 </div>
