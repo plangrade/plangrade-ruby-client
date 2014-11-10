@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-PlangradeClient::Application.config.secret_key_base = 'd284763fc6dbb4b2b8a5a2dd179a897fe666b1aa6b83ac884691e0b90230a4334bee9a1974da56431d1aa6940a40d26d8dfdb8162fc2d17759f46f077a895bbe'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+PlangradeClient::Application.config.secret_key_base = secure_token

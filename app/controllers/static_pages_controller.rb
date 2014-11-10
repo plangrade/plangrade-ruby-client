@@ -1,14 +1,18 @@
 class StaticPagesController < ApplicationController
+  require 'plangrade'
+
   def home
-	@client = OAuth2::Client.new(ENV['PLANGRADE_APP_ID'], ENV['PLANGRADE_SECRET'], :site => "https://plangrade.com")
   end
 
   def redirect
-  	client = OAuth2::Client.new(ENV['PLANGRADE_APP_ID'], ENV['PLANGRADE_SECRET'], :site => "https://plangrade.com")
-	token = client.auth_code.get_token(params[:code], :redirect_uri => redirect_url)
-	user_info = JSON.parse token.get('/api/v1/users/4').body
-	@user = user_info["user"]
-	companies_info = JSON.parse token.get('/api/v1/companies').body
-	@companies = companies_info["companies"]
+  	auth = request.env["omniauth.auth"]
+  	token = auth["credentials"]["token"]
+  	@refresh_token = auth["credentials"]["refresh_token"]
+  	Plangrade.configure do |p|
+  	  p.access_token = token
+	end
+	@user = Plangrade.current_user
+	@companies = Plangrade.all_companies
+	@participants = Plangrade.all_participants(:company_id => 2)
   end
 end
