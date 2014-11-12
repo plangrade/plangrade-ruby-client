@@ -5,28 +5,22 @@
         <h4><strong>User:</strong></h4>
         <div class="row">
           <div class="col-md-8">
-            <h5><%= @user[:name] %></h5>
+            <h5><%= @user.name %></h5>
             <h6><strong>Email:</strong> <%= @user[:email] %>, <strong>ID:</strong> <%= @user[:id] %></h6>
           </div>
-          <div class="col-md-4">
-            <%= link_to "Refresh Token", "#", class: "btn btn-sm btn-success" %>
+          <div class="col-md-4 text-right">
+            <%= link_to (fa_icon "edit", class: "edit-btn"), "#", class: "btn btn-sm btn-warning btn-margin" %>
+            <%= link_to (fa_icon "trash-o", class: "trash-btn"), "#", class: "btn btn-sm btn-danger btn-margin" %>
           </div>
         </div>
-        <h4><strong>Companies:</strong></h4>
-        <% @companies.each do |company| %>
-          <div class="row">
-            <div class="col-md-8">
-              <h5><%= company[:name] %></h5>
-              <h6><strong>ID:</strong> <%= company[:id] %>, <strong>EIN:</strong> <%= company[:ein] %>, <strong>Grade:</strong> <%= company[:grade] %></h6>
-            </div>
-            <div class="col-md-4">
-              <%= link_to "Show Participants", "#", class: "btn btn-sm btn-success" %>
-            </div>
-          </div>
-        <% end %>
+        <div id="companies_list">
+          <%= render 'companies' %>
+        </div>
     	</div>
     	<div class="col-md-6">
-        <h4><strong>Participants:</strong></h4>
+        <div id="participants_list">
+          <%= render 'participants' %>
+        </div>
     	</div>
     </div>
   </div>

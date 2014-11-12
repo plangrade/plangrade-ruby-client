@@ -1,0 +1,17 @@
+<h4><strong>Companies:</strong></h4>
+<% if !@companies.nil? && @companies.count > 0 %>
+  <% @companies.each do |company| %>
+    <div class="row">
+      <div class="col-md-8">
+        <h5><%= company[:name] %></h5>
+        <h6><strong>ID:</strong> <%= company[:id] %>, <strong>EIN:</strong> <%= company[:ein] %>, <strong>Grade:</strong> <%= company[:grade] %></h6>
+      </div>
+      <div class="col-md-4 text-right">
+        <%= link_to fa_icon("users", class: "users-btn"), get_participants_path(:refresh_token => @refresh_token, :company_id => company[:id]), remote: true, class: "btn btn-sm btn-default btn-margin" %>
+        <%= link_to fa_icon("plus", class: "plus-btn"), "#", class: "btn btn-sm btn-success btn-margin" %>
+        <%= link_to fa_icon("edit", class: "edit-btn"), "#", class: "btn btn-sm btn-warning btn-margin" %>
+        <%= link_to fa_icon("trash-o", class: "trash-btn"), "#", class: "btn btn-sm btn-danger btn-margin" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

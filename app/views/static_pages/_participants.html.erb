@@ -1,0 +1,21 @@
+<% if @participants.nil? || @participants.count < 1 %>
+  <h4><strong>Participants:</strong></h4>
+  <h5>No participants to display</h5>
+<% else %> 
+  <h4><strong>Participants of <%= @participants.first[:company_id] %> (Company ID):</strong></h4>
+  <% @participants.each do |participant| %>
+    <div class="row">
+      <div class="col-md-8">
+        <h5><%= "#{participant[:first_name]} #{participant[:last_name]}" %></h5>
+        <h6><strong>ID:</strong> <%= participant[:id] %>, <strong>Employee ID:</strong> <%= participant[:employee_id] %>, <strong>DOB:</strong> <%= participant[:dob] %></h6>
+        <h6><strong>Address:</strong> <%= "#{participant[:street1]}, #{participant[:street2]}, #{participant[:city]}, #{participant[:state]}, #{participant[:zip]}" %></h6>
+        <h6><strong>Email:</strong> <%= participant[:email] %>, <strong>Phone:</strong> <%= participant[:phone] %></h6>
+      </div>
+      <div class="col-md-4 text-right">
+        <%= link_to fa_icon("archive", class: "archive-btn"), "#", class: "btn btn-sm btn-default btn-margin" %>
+        <%= link_to fa_icon("edit", class: "edit-btn"), "#", class: "btn btn-sm btn-warning btn-margin" %>
+        <%= link_to fa_icon("trash-o", class: "trash-btn"), "#", class: "btn btn-sm btn-danger btn-margin" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
