@@ -147,7 +147,7 @@ GEM
       omniauth
       omniauth-oauth2
     pg (0.17.1)
-    plangrade-ruby (0.3.0)
+    plangrade-ruby (0.3.3)
       addressable (~> 2.3)
       multi_json (~> 1.8)
       oauth2-client (~> 2.0)

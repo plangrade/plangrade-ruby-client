@@ -13,16 +13,16 @@ class StaticPagesController < ApplicationController
   	# configure plangrade with the returned token
   	Plangrade.configure do |p|
   	  p.access_token = token
-	end
+    end
 
-	# get the current user's info
-	@user = Plangrade.current_user
+    # get the current user's info
+  	@user = Plangrade::Resources::User.current_user
 
-	# get all of the current user's companies
-	@companies = Plangrade.all_companies
+  	# get all of the current user's companies
+  	@companies = Plangrade::Resources::Company.all
 
-	# set participants to nil
-	@participants = nil
+  	# set participants to nil
+  	@participants = nil
   end
 
   def participants

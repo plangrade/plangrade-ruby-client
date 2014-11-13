@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-8">
             <h5><%= @user.name %></h5>
-            <h6><strong>Email:</strong> <%= @user[:email] %>, <strong>ID:</strong> <%= @user[:id] %></h6>
+            <h6><strong>Email:</strong> <%= @user.email %>, <strong>ID:</strong> <%= @user.id %></h6>
           </div>
           <div class="col-md-4 text-right">
             <%= link_to (fa_icon "edit", class: "edit-btn"), "#", class: "btn btn-sm btn-warning btn-margin" %>
